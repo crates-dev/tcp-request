@@ -1,0 +1,24 @@
+[package]
+name = "tcp-request"
+version = "0.0.1"
+edition = "2021"
+authors = ["ltpp-universe <root@ltpp.vip>"] 
+license = "MIT"
+description = """A Rust library for sending raw TCP requests, with features for handling responses, managing redirects, and working with compressed data over TCP connections."""
+keywords = ["http", "request", "response", "tcp", "redirect"]
+repository = "https://github.com/ltpp-universe/tcp-request.git"
+categories = ["network-programming", "web-programming"]
+exclude = [
+    "target",    
+    "Cargo.lock",
+    "sh",
+    ".github"
+]
+
+[dependencies]
+http-compress = "1.0.0"
+http-type = "2.3.0"
+lombok-macros = "1.3.0"
+
+[dev-dependencies]
+color-output = "6.1.4"
