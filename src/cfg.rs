@@ -43,7 +43,7 @@ fn test_http_post_request() {
 }
 
 #[test]
-fn readme() {
+fn test_readme_text() {
     let mut request_builder = RequestBuilder::new()
         .host("127.0.0.1")
         .port(80)
@@ -55,5 +55,21 @@ fn readme() {
             println!("ResponseTrait => {:?}", response.text());
             Ok(())
         })
-        .unwrap_or_else(|e| output("Error => ", &format!("{:?}", e), Color::Red));
+        .unwrap_or_else(|e| println!("Error => {:?}", e));
+}
+
+#[test]
+fn test_readme_binary() {
+    let mut request_builder = RequestBuilder::new()
+        .host("127.0.0.1")
+        .port(80)
+        .data("tcp send".as_bytes())
+        .builder();
+    request_builder
+        .send()
+        .and_then(|response| {
+            println!("ResponseTrait => {:?}", response.text());
+            Ok(())
+        })
+        .unwrap_or_else(|e| println!("Error => {:?}", e));
 }

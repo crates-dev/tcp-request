@@ -25,7 +25,7 @@ cargo add tcp-request
 
 ```rs
 use tcp_request::*;
- let mut request_builder = RequestBuilder::new()
+let mut request_builder = RequestBuilder::new()
     .host("127.0.0.1")
     .port(80)
     .data("tcp send")
@@ -36,13 +36,25 @@ request_builder
         println!("ResponseTrait => {:?}", response.text());
         Ok(())
     })
-    .unwrap_or_else(|e| output("Error => ", &format!("{:?}", e), Color::Red));
+    .unwrap_or_else(|e| println!("Error => {:?}", e));
 ```
 
 #### Send Binary
 
 ```rs
-
+use tcp_request::*;
+let mut request_builder = RequestBuilder::new()
+    .host("127.0.0.1")
+    .port(80)
+    .data("tcp send".as_bytes())
+    .builder();
+request_builder
+    .send()
+    .and_then(|response| {
+        println!("ResponseTrait => {:?}", response.text());
+        Ok(())
+    })
+    .unwrap_or_else(|e| println!("Error => {:?}", e));
 ```
 
 ## Help
