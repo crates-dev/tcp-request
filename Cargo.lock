@@ -432,7 +432,7 @@ dependencies = [
 
 [[package]]
 name = "tcp-request"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
  "color-output",
  "http-type",
