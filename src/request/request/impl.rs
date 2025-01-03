@@ -15,7 +15,10 @@ use std::{
 
 impl TcpRequest {
     fn send_request(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, Error> {
-        stream.write_all(&self.data).unwrap();
+        stream
+            .write_all(&self.data)
+            .and_then(|_| stream.flush())
+            .unwrap();
         self.read_response(stream)
     }
 
