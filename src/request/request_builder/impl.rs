@@ -47,7 +47,7 @@ impl RequestBuilder {
         self
     }
 
-    pub fn builder(&mut self) -> BoxRequestTrait {
+    pub fn build(&mut self) -> BoxRequestTrait {
         self.builder = self.tcp_request.clone();
         self.tcp_request = TcpRequest::default();
         Box::new(self.builder.clone())

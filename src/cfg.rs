@@ -28,7 +28,7 @@ fn test_http_post_request() {
         .host("127.0.0.1")
         .port(80)
         .data("tcp send")
-        .builder();
+        .build();
     request_builder
         .send()
         .and_then(|response| {
@@ -48,7 +48,7 @@ fn test_readme_text() {
         .host("127.0.0.1")
         .port(80)
         .data("tcp send")
-        .builder();
+        .build();
     request_builder
         .send()
         .and_then(|response| {
@@ -64,7 +64,7 @@ fn test_readme_binary() {
         .host("127.0.0.1")
         .port(80)
         .data("tcp send".as_bytes())
-        .builder();
+        .build();
     request_builder
         .send()
         .and_then(|response| {
