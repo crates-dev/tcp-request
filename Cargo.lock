@@ -113,9 +113,9 @@ dependencies = [
 
 [[package]]
 name = "http-type"
-version = "2.17.0"
+version = "2.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "880e024fee1f0c7c51a9a17b0515bfaf630a2e55175d6e55836e6b55b4182d1e"
+checksum = "2febe3f4273440a9065a8be46d7c2a122ab219786abc4a495e95fd1b33b6e938"
 dependencies = [
  "hex",
  "http-constant",
@@ -432,7 +432,7 @@ dependencies = [
 
 [[package]]
 name = "tcp-request"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
  "color-output",
  "http-type",
