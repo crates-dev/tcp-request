@@ -1,3 +1,5 @@
+use std::sync::{Arc, RwLock};
+
 use http_type::HTTP_DOUBLE_BR_BYTES;
 
 use super::r#type::RequestBuilder;
@@ -20,14 +22,31 @@ impl RequestBuilder {
     }
 
     #[inline]
-    pub fn host(&mut self, host: &str) -> &mut Self {
-        self.tcp_request.config.host = host.to_owned();
+    pub fn host<T>(&mut self, host: T) -> &mut Self
+    where
+        T: Into<String>,
+    {
+        let _ = self
+            .tcp_request
+            .get_mut_config()
+            .write()
+            .and_then(|mut data| {
+                data.host = host.into();
+                Ok(())
+            });
         self
     }
 
     #[inline]
     pub fn port(&mut self, port: usize) -> &mut Self {
-        self.tcp_request.config.port = port;
+        let _ = self
+            .tcp_request
+            .get_mut_config()
+            .write()
+            .and_then(|mut data| {
+                data.port = port;
+                Ok(())
+            });
         self
     }
 
@@ -38,19 +57,33 @@ impl RequestBuilder {
     {
         let mut data_clone: Vec<u8> = data.into();
         data_clone.extend_from_slice(HTTP_DOUBLE_BR_BYTES);
-        self.tcp_request.data = data_clone;
+        self.tcp_request.data = Arc::new(RwLock::new(data_clone));
         self
     }
 
     #[inline]
     pub fn buffer(&mut self, buffer_size: usize) -> &mut Self {
-        self.tcp_request.config.buffer_size = buffer_size;
+        let _ = self
+            .tcp_request
+            .get_mut_config()
+            .write()
+            .and_then(|mut data| {
+                data.buffer_size = buffer_size;
+                Ok(())
+            });
         self
     }
 
     #[inline]
     pub fn timeout(&mut self, timeout: u64) -> &mut Self {
-        self.tcp_request.config.timeout = timeout;
+        let _ = self
+            .tcp_request
+            .get_mut_config()
+            .write()
+            .and_then(|mut data| {
+                data.timeout = timeout;
+                Ok(())
+            });
         self
     }
 

@@ -1,6 +1,5 @@
 #[cfg(test)]
 mod cfg;
-pub(crate) mod constant;
 pub(crate) mod request;
 pub(crate) mod response;
 

@@ -6,4 +6,5 @@ pub enum Error {
     ReadConnectionError,
     SetReadTimeoutError,
     SetWriteTimeoutError,
+    ReadResponseError,
 }

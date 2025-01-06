@@ -1,5 +1,4 @@
 use super::r#type::Config;
-use crate::constant::r#type::DEFAULT_TIMEOUT;
 use http_type::*;
 
 impl Default for Config {
@@ -7,7 +6,7 @@ impl Default for Config {
     fn default() -> Self {
         Self {
             timeout: DEFAULT_TIMEOUT,
-            buffer_size: 1_024_000,
+            buffer_size: DEFAULT_BUFFER_SIZE,
             host: EMPTY_STR.to_owned(),
             port: usize::default(),
         }

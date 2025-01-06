@@ -88,7 +88,7 @@ fn test_thread_http_get_request() {
             .host("127.0.0.1")
             .port(8080)
             .timeout(10)
-            .buffer(100)
+            .buffer(1_024_000)
             .build(),
     ));
     for _ in 0..num_threads {
