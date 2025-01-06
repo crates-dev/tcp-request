@@ -14,6 +14,7 @@ use std::{
 };
 
 impl TcpRequest {
+    #[inline]
     fn send_request(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, Error> {
         stream
             .write_all(&self.data)
@@ -22,6 +23,7 @@ impl TcpRequest {
         self.read_response(stream)
     }
 
+    #[inline]
     fn read_response(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, Error> {
         let mut tmp_buf: Vec<u8> = vec![0u8; self.get_config().get_buffer_size().clone()];
         let mut response_bytes: Vec<u8> = Vec::new();
@@ -35,6 +37,7 @@ impl TcpRequest {
         return Ok(Box::new(self.response.clone()));
     }
 
+    #[inline]
     fn get_connection_stream(&self, host: String, port: usize) -> Result<TcpStream, Error> {
         let host_port: (String, u16) = (host.clone(), port as u16);
         let timeout: Duration = Duration::from_millis(self.config.timeout);
@@ -53,6 +56,8 @@ impl TcpRequest {
 
 impl RequestTrait for TcpRequest {
     type RequestResult = RequestResult;
+
+    #[inline]
     fn send(&mut self) -> Self::RequestResult {
         let host: String = self.config.host.clone();
         let port: usize = self.get_config().get_port().clone();
@@ -65,6 +70,7 @@ impl RequestTrait for TcpRequest {
 }
 
 impl Default for TcpRequest {
+    #[inline]
     fn default() -> Self {
         Self {
             config: Config::default(),

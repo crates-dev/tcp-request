@@ -1,6 +1,1 @@
-use lombok_macros::*;
-
-#[derive(Debug, Clone, Lombok)]
-pub struct TcpResponseText {
-    pub data: String,
-}
+pub type TcpResponseText = String;

@@ -73,3 +73,59 @@ fn test_readme_binary() {
         })
         .unwrap_or_else(|e| println!("Error => {:?}", e));
 }
+
+#[test]
+fn test_thread_http_get_request() {
+    use http_type::ArcMutex;
+    use std::sync::Arc;
+    use std::sync::Mutex;
+    use std::thread;
+    use std::time::Instant;
+    let num_threads: i32 = 10;
+    let mut handles: Vec<thread::JoinHandle<()>> = Vec::new();
+    let request_builder: ArcMutex<BoxRequestTrait> = Arc::new(Mutex::new(
+        RequestBuilder::new()
+            .host("127.0.0.1")
+            .port(8080)
+            .timeout(10)
+            .buffer(100)
+            .build(),
+    ));
+    for _ in 0..num_threads {
+        let request_builder = Arc::clone(&request_builder);
+        let handle = thread::spawn(move || {
+            let mut request_builder = request_builder.lock().unwrap();
+            let start_time: Instant = Instant::now();
+            match request_builder.send() {
+                Ok(response) => {
+                    let duration: std::time::Duration = start_time.elapsed();
+                    output(
+                        "Thread finished in: ",
+                        &format!("{:?}", duration),
+                        Color::Blue,
+                    );
+                    let response_text = response.text();
+                    output(
+                        "ResponseTrait => ",
+                        &format!("{:?}", response_text),
+                        Color::Green,
+                    );
+                }
+                Err(e) => {
+                    let duration: std::time::Duration = start_time.elapsed();
+                    output(
+                        "Thread finished in: ",
+                        &format!("{:?}", duration),
+                        Color::Blue,
+                    );
+                    output("Error => ", &format!("{:?}", e), Color::Red);
+                }
+            }
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+}

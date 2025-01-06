@@ -1,4 +1,1 @@
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct TcpResponseBinary {
-    pub data: Vec<u8>,
-}
+pub type TcpResponseBinary = Vec<u8>;

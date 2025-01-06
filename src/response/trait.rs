@@ -1,6 +1,8 @@
-pub trait ResponseTrait {
-    type OutputText;
-    type OutputBinary;
+use std::fmt::Debug;
+
+pub trait ResponseTrait: Send + Debug {
+    type OutputText: Clone + Sized;
+    type OutputBinary: Clone + Sized;
 
     fn text(&self) -> Self::OutputText;
 

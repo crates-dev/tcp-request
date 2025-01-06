@@ -5,6 +5,7 @@ impl ResponseTrait for TcpResponseText {
     type OutputText = TcpResponseText;
     type OutputBinary = TcpResponseBinary;
 
+    #[inline]
     fn from(response: &[u8]) -> Self::OutputText
     where
         Self: Sized,
@@ -12,26 +13,19 @@ impl ResponseTrait for TcpResponseText {
         <TcpResponseBinary as ResponseTrait>::from(response).text()
     }
 
+    #[inline]
     fn text(&self) -> Self::OutputText {
         self.clone()
     }
 
+    #[inline]
     fn binary(&self) -> TcpResponseBinary {
-        TcpResponseBinary {
-            data: self.data.clone().into_bytes(),
-        }
+        self.clone().into_bytes()
     }
 
+    #[inline]
     fn decode(&self) -> TcpResponseBinary {
-        let data: Vec<u8> = self.data.as_bytes().to_vec();
-        TcpResponseBinary { data }
-    }
-}
-
-impl Default for TcpResponseText {
-    fn default() -> Self {
-        Self {
-            data: String::new(),
-        }
+        let data: Vec<u8> = self.as_bytes().to_vec();
+        data
     }
 }

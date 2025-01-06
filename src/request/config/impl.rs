@@ -3,6 +3,7 @@ use crate::constant::r#type::DEFAULT_TIMEOUT;
 use http_type::*;
 
 impl Default for Config {
+    #[inline]
     fn default() -> Self {
         Self {
             timeout: DEFAULT_TIMEOUT,
