@@ -8,7 +8,7 @@ impl Default for Config {
             timeout: DEFAULT_TIMEOUT,
             buffer_size: DEFAULT_BUFFER_SIZE,
             host: EMPTY_STR.to_owned(),
-            port: usize::default(),
+            port: DEFAULT_WEB_PORT,
         }
     }
 }
