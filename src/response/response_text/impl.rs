@@ -22,10 +22,4 @@ impl ResponseTrait for TcpResponseText {
     fn binary(&self) -> TcpResponseBinary {
         self.clone().into_bytes()
     }
-
-    #[inline]
-    fn decode(&self) -> TcpResponseBinary {
-        let data: Vec<u8> = self.as_bytes().to_vec();
-        data
-    }
 }

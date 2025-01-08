@@ -11,6 +11,4 @@ pub trait ResponseTrait: Send + Debug {
     fn from(response: &[u8]) -> Self
     where
         Self: Sized;
-
-    fn decode(&self) -> Self::OutputBinary;
 }

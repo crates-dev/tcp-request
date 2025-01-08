@@ -23,10 +23,4 @@ impl ResponseTrait for TcpResponseBinary {
         let data: String = String::from_utf8_lossy(&self).to_string();
         data
     }
-
-    #[inline]
-    fn decode(&self) -> TcpResponseBinary {
-        let data: Vec<u8> = self.clone();
-        data
-    }
 }
