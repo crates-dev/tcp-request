@@ -36,15 +36,15 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
 name = "http-constant"
-version = "1.23.0"
+version = "1.25.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e41a9d4d7d14da8c14d79141e57d5fcfae4814300e8cfbaa7b306cea23839095"
+checksum = "eb37523f40fe53d5ae3171dc23673f86e51b8aa0384f25ee50aad427b52eb637"
 
 [[package]]
 name = "http-type"
-version = "2.25.0"
+version = "2.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "24543d6694e856e2d02ee092c5321326dc93d5716de32c878a65fad73bd66171"
+checksum = "2562e79880a281b908e89a62c933f1ef21d11622c22ef0193014a801697a56d5"
 dependencies = [
  "hex",
  "http-constant",
@@ -352,7 +352,7 @@ dependencies = [
 
 [[package]]
 name = "tcp-request"
-version = "1.9.1"
+version = "1.10.0"
 dependencies = [
  "color-output",
  "http-type",
