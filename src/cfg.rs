@@ -1,5 +1,7 @@
 use crate::*;
 use color_output::*;
+use http_type::*;
+use std_macro_extensions::*;
 
 #[allow(dead_code)]
 fn output(title: &str, msg: &str, color: Color) {
@@ -76,13 +78,8 @@ fn test_readme_binary() {
 
 #[test]
 fn test_thread_http_get_request() {
-    use http_type::ArcMutex;
-    use std::sync::Arc;
-    use std::sync::Mutex;
-    use std::thread;
-    use std::time::Instant;
     let num_threads: i32 = 10;
-    let mut handles: Vec<thread::JoinHandle<()>> = Vec::new();
+    let mut handles: Vec<JoinHandle<()>> = Vec::new();
     let request_builder: ArcMutex<BoxRequestTrait> = Arc::new(Mutex::new(
         RequestBuilder::new()
             .host("127.0.0.1")
@@ -93,7 +90,7 @@ fn test_thread_http_get_request() {
     ));
     for _ in 0..num_threads {
         let request_builder = Arc::clone(&request_builder);
-        let handle = thread::spawn(move || {
+        let handle = spawn(move || {
             let mut request_builder = request_builder.lock().unwrap();
             let start_time: Instant = Instant::now();
             match request_builder.send() {

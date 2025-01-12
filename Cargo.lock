@@ -329,6 +329,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3"
 
 [[package]]
+name = "std-macro-extensions"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eb81c946abc2091d8d58391d0a3adcbc9d60cddbf3acebbc54690c2ba75ea9b1"
+
+[[package]]
 name = "syn"
 version = "2.0.95"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -352,11 +358,12 @@ dependencies = [
 
 [[package]]
 name = "tcp-request"
-version = "1.10.1"
+version = "1.10.2"
 dependencies = [
  "color-output",
  "http-type",
  "lombok-macros",
+ "std-macro-extensions",
 ]
 
 [[package]]
