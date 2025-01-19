@@ -1,6 +1,6 @@
 [package]
 name = "tcp-request"
-version = "1.10.8"
+version = "1.10.9"
 edition = "2021"
 authors = ["ltpp-universe <root@ltpp.vip>"] 
 license = "MIT"
@@ -16,7 +16,7 @@ exclude = [
 ]
 
 [dependencies]
-http-type = "2.30.3"
+http-type = "2.30.4"
 lombok-macros = "1.7.1"
 
 [dev-dependencies]
