@@ -1,6 +1,6 @@
 [package]
 name = "tcp-request"
-version = "1.10.19"
+version = "1.10.20"
 edition = "2021"
 authors = ["ltpp-universe <root@ltpp.vip>"] 
 license = "MIT"
@@ -16,12 +16,12 @@ exclude = [
 ]
 
 [dependencies]
-http-type = "2.33.0"
-lombok-macros = "1.7.2"
+http-type = "2.33.1"
+lombok-macros = "1.7.3"
 
 [dev-dependencies]
-color-output = "6.1.7"
-std-macro-extensions = "0.21.0"
+color-output = "6.1.8"
+std-macro-extensions = "0.21.1"
 
 [profile.dev]
 incremental = false
