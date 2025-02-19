@@ -1,4 +1,4 @@
-use std::fmt::Debug;
+use crate::*;
 
 pub trait ResponseTrait: Send + Debug {
     type OutputText: Clone + Sized;

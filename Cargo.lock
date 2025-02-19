@@ -94,9 +94,12 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "color-output"
-version = "6.1.8"
+version = "6.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d641a3a8617977a6612e52206fa673bae5e248f2764868453cf1eb0ed8d4e98a"
+checksum = "f09bbde0681f94a4620864aba472bf05c0ffd8a6980dd8d3f55f826f96132684"
+dependencies = [
+ "hyperlane-time",
+]
 
 [[package]]
 name = "crc32fast"
@@ -183,6 +186,12 @@ dependencies = [
  "tokio",
  "url",
 ]
+
+[[package]]
+name = "hyperlane-time"
+version = "0.0.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "59ba1b8e29b16c629f22fc5e4c0d42ee54de9b363b3ebea5c716fdcf6d7c2c08"
 
 [[package]]
 name = "icu_collections"
@@ -600,7 +609,7 @@ dependencies = [
 
 [[package]]
 name = "tcp-request"
-version = "1.11.4"
+version = "1.11.5"
 dependencies = [
  "color-output",
  "http-type",

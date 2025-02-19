@@ -1,4 +1,4 @@
-use crate::request::request::r#type::TcpRequest;
+use crate::*;
 
 #[derive(Debug, Clone)]
 pub struct RequestBuilder {

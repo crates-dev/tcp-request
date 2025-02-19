@@ -6,27 +6,6 @@ use std::{
 };
 use std_macro_extensions::*;
 
-#[allow(dead_code)]
-fn output(title: &str, msg: &str, color: Color) {
-    OutputListBuilder::new()
-        .add(
-            OutputBuilder::new()
-                .text(title)
-                .bg_color(ColorType::Use(Color::Cyan))
-                .blod(true)
-                .build(),
-        )
-        .add(
-            OutputBuilder::new()
-                .text(msg)
-                .bg_color(ColorType::Use(color))
-                .blod(true)
-                .endl(true)
-                .build(),
-        )
-        .run();
-}
-
 #[test]
 fn test_http_post_request() {
     let mut request_builder = RequestBuilder::new()
@@ -37,14 +16,10 @@ fn test_http_post_request() {
     request_builder
         .send()
         .and_then(|response| {
-            output(
-                "ResponseTrait => ",
-                &format!("{:?}", response.text()),
-                Color::Green,
-            );
+            println_success!("ResponseTrait => ", format!("{:?}", response.text()));
             Ok(())
         })
-        .unwrap_or_else(|e| output("Error => ", &format!("{:?}", e), Color::Red));
+        .unwrap_or_else(|e| println_error!("Error => ", format!("{:?}", e)));
 }
 
 #[test]
@@ -110,26 +85,14 @@ fn test_thread_http_get_request() {
             match request_builder.send() {
                 Ok(response) => {
                     let duration: std::time::Duration = start_time.elapsed();
-                    output(
-                        "Thread finished in: ",
-                        &format!("{:?}", duration),
-                        Color::Blue,
-                    );
+                    println_success!("Thread finished in: ", format!("{:?}", duration));
                     let response_text = response.text();
-                    output(
-                        "ResponseTrait => ",
-                        &format!("{:?}", response_text),
-                        Color::Green,
-                    );
+                    println_success!("ResponseTrait => ", format!("{:?}", response_text));
                 }
                 Err(e) => {
                     let duration: std::time::Duration = start_time.elapsed();
-                    output(
-                        "Thread finished in: ",
-                        &format!("{:?}", duration),
-                        Color::Blue,
-                    );
-                    output("Error => ", &format!("{:?}", e), Color::Red);
+                    println_success!("Thread finished in: ", format!("{:?}", duration));
+                    println_success!("Error => ", format!("{:?}", e));
                 }
             }
         });

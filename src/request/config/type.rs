@@ -1,4 +1,4 @@
-use lombok_macros::*;
+use crate::*;
 
 #[derive(Debug, Clone, PartialEq, Eq, Lombok)]
 pub struct Config {
