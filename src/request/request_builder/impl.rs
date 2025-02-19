@@ -1,9 +1,4 @@
-use std::sync::{Arc, RwLock};
-
-use http_type::HTTP_DOUBLE_BR_BYTES;
-
-use super::r#type::RequestBuilder;
-use crate::request::{r#type::BoxRequestTrait, request::r#type::TcpRequest};
+use crate::*;
 
 impl Default for RequestBuilder {
     #[inline]

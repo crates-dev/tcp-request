@@ -1,8 +1,4 @@
-use super::r#type::Error;
-use std::{
-    error::Error as StdError,
-    fmt::{self, Display},
-};
+use crate::*;
 
 impl StdError for Error {}
 

@@ -1,5 +1,4 @@
-use super::r#type::TcpResponseText;
-use crate::response::{r#trait::ResponseTrait, response_binary::r#type::TcpResponseBinary};
+use crate::*;
 
 impl ResponseTrait for TcpResponseText {
     type OutputText = TcpResponseText;

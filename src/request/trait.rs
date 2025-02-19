@@ -1,4 +1,4 @@
-use std::fmt::Debug;
+use crate::*;
 
 pub trait RequestTrait: Send + Debug {
     type RequestResult: Sized;

@@ -1,6 +1,4 @@
-use crate::{request::config::r#type::Config, TcpResponseBinary};
-use http_type::ArcRwLock;
-use lombok_macros::*;
+use crate::*;
 
 #[derive(Debug, Clone, Lombok)]
 pub struct TcpRequest {

@@ -1,20 +1,4 @@
-use http_type::{DEFAULT_BUFFER_SIZE, DEFAULT_TIMEOUT};
-
-use super::r#type::TcpRequest;
-use crate::request::r#trait::RequestTrait;
-use crate::{
-    request::{config::r#type::Config, error::r#type::Error, r#type::RequestResult},
-    response::{
-        r#trait::ResponseTrait, r#type::BoxResponseTrait,
-        response_binary::r#type::TcpResponseBinary,
-    },
-};
-use std::sync::{Arc, RwLock};
-use std::{
-    io::{Read, Write},
-    net::TcpStream,
-    time::Duration,
-};
+use crate::*;
 
 impl TcpRequest {
     #[inline]
