@@ -1,10 +1,9 @@
 use crate::*;
-use color_output::*;
 use std::{
+    sync::Mutex,
     thread::{spawn, JoinHandle},
     time::Instant,
 };
-use std_macro_extensions::*;
 
 #[test]
 fn test_http_post_request() {
@@ -16,10 +15,10 @@ fn test_http_post_request() {
     request_builder
         .send()
         .and_then(|response| {
-            println_success!("ResponseTrait => ", format!("{:?}", response.text()));
+            println!("ResponseTrait => {}", response.text());
             Ok(())
         })
-        .unwrap_or_else(|e| println_error!("Error => ", format!("{:?}", e)));
+        .unwrap_or_else(|e| println!("Error => {}", e));
 }
 
 #[test]
@@ -85,14 +84,14 @@ fn test_thread_http_get_request() {
             match request_builder.send() {
                 Ok(response) => {
                     let duration: std::time::Duration = start_time.elapsed();
-                    println_success!("Thread finished in: ", format!("{:?}", duration));
+                    println!("{:?}", duration);
                     let response_text = response.text();
-                    println_success!("ResponseTrait => ", format!("{:?}", response_text));
+                    println!("ResponseTrait => {}", response_text);
                 }
                 Err(e) => {
                     let duration: std::time::Duration = start_time.elapsed();
-                    println_success!("Thread finished in: ", format!("{:?}", duration));
-                    println_success!("Error => ", format!("{:?}", e));
+                    println!("{:?}", duration);
+                    println!("Error => {}", e);
                 }
             }
         });
