@@ -9,7 +9,7 @@ use std::{
 fn test_http_post_request() {
     let mut request_builder = RequestBuilder::new()
         .host("127.0.0.1")
-        .port(80)
+        .port(60000)
         .data("tcp send")
         .build();
     request_builder
@@ -25,7 +25,7 @@ fn test_http_post_request() {
 fn test_readme_text() {
     let mut request_builder = RequestBuilder::new()
         .host("127.0.0.1")
-        .port(80)
+        .port(60000)
         .data("tcp send")
         .build();
     request_builder
@@ -41,7 +41,7 @@ fn test_readme_text() {
 fn test_readme_binary() {
     let mut request_builder = RequestBuilder::new()
         .host("127.0.0.1")
-        .port(80)
+        .port(60000)
         .data("tcp send".as_bytes())
         .build();
     request_builder
@@ -60,7 +60,7 @@ fn test_thread_http_get_request() {
     let request_builder: Arc<Mutex<BoxRequestTrait>> = Arc::new(Mutex::new(
         RequestBuilder::new()
             .host("127.0.0.1")
-            .port(8080)
+            .port(60000)
             .timeout(10)
             .buffer(1_024_000)
             .build(),

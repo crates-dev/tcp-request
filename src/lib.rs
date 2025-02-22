@@ -13,10 +13,7 @@ pub use response::{
     response_text::r#type::TcpResponseText,
 };
 
-pub(crate) use common::r#type::*;
-pub(crate) use http_type::{
-    DEFAULT_BUFFER_SIZE, DEFAULT_TIMEOUT, DEFAULT_WEB_PORT, EMPTY_STR, HTTP_DOUBLE_BR_BYTES,
-};
+pub(crate) use common::{constant::*, r#type::*};
 pub(crate) use lombok_macros::*;
 pub(crate) use request::{
     config::r#type::*, error::r#type::Error, r#type::RequestResult, request::r#type::*,

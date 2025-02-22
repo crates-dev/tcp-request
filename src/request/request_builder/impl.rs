@@ -51,7 +51,7 @@ impl RequestBuilder {
         T: Into<Vec<u8>>,
     {
         let mut data_clone: Vec<u8> = data.into();
-        data_clone.extend_from_slice(HTTP_DOUBLE_BR_BYTES);
+        data_clone.extend_from_slice(SPLIT_REQUEST_BYTES);
         self.tcp_request.data = Arc::new(RwLock::new(data_clone));
         self
     }
