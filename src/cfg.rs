@@ -6,18 +6,6 @@ use std::{
 };
 
 #[test]
-fn test_http_post_request() {
-    let mut request_builder = RequestBuilder::new().host("127.0.0.1").port(60000).build();
-    request_builder
-        .send("tcp send".as_bytes())
-        .and_then(|response| {
-            println!("ResponseTrait => {}", response.text());
-            Ok(())
-        })
-        .unwrap_or_else(|e| println!("Error => {}", e));
-}
-
-#[test]
 fn test_readme_text() {
     let mut request_builder = RequestBuilder::new().host("127.0.0.1").port(60000).build();
     request_builder
@@ -42,7 +30,7 @@ fn test_readme_binary() {
 }
 
 #[test]
-fn test_thread_http_get_request() {
+fn test_thread_request() {
     let num_threads: i32 = 10;
     let mut handles: Vec<JoinHandle<()>> = Vec::new();
     let request_builder: Arc<Mutex<BoxRequestTrait>> = Arc::new(Mutex::new(
