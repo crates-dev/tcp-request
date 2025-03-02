@@ -7,13 +7,9 @@ use std::{
 
 #[test]
 fn test_http_post_request() {
-    let mut request_builder = RequestBuilder::new()
-        .host("127.0.0.1")
-        .port(60000)
-        .data("tcp send")
-        .build();
+    let mut request_builder = RequestBuilder::new().host("127.0.0.1").port(60000).build();
     request_builder
-        .send()
+        .send("tcp send".as_bytes())
         .and_then(|response| {
             println!("ResponseTrait => {}", response.text());
             Ok(())
@@ -23,13 +19,9 @@ fn test_http_post_request() {
 
 #[test]
 fn test_readme_text() {
-    let mut request_builder = RequestBuilder::new()
-        .host("127.0.0.1")
-        .port(60000)
-        .data("tcp send")
-        .build();
+    let mut request_builder = RequestBuilder::new().host("127.0.0.1").port(60000).build();
     request_builder
-        .send()
+        .send("tcp send".as_bytes())
         .and_then(|response| {
             println!("ResponseTrait => {:?}", response.text());
             Ok(())
@@ -39,13 +31,9 @@ fn test_readme_text() {
 
 #[test]
 fn test_readme_binary() {
-    let mut request_builder = RequestBuilder::new()
-        .host("127.0.0.1")
-        .port(60000)
-        .data("tcp send".as_bytes())
-        .build();
+    let mut request_builder = RequestBuilder::new().host("127.0.0.1").port(60000).build();
     request_builder
-        .send()
+        .send("tcp send".as_bytes())
         .and_then(|response| {
             println!("ResponseTrait => {:?}", response.text());
             Ok(())
@@ -81,7 +69,7 @@ fn test_thread_http_get_request() {
         let handle: JoinHandle<()> = spawn(move || {
             let mut request_builder = request_builder.lock().unwrap();
             let start_time: Instant = Instant::now();
-            match request_builder.send() {
+            match request_builder.send("tcp send".as_bytes()) {
                 Ok(response) => {
                     let duration: std::time::Duration = start_time.elapsed();
                     println!("{:?}", duration);

@@ -46,17 +46,6 @@ impl RequestBuilder {
     }
 
     #[inline]
-    pub fn data<T>(&mut self, data: T) -> &mut Self
-    where
-        T: Into<Vec<u8>>,
-    {
-        let mut data_clone: Vec<u8> = data.into();
-        data_clone.extend_from_slice(SPLIT_REQUEST_BYTES);
-        self.tcp_request.data = Arc::new(RwLock::new(data_clone));
-        self
-    }
-
-    #[inline]
     pub fn buffer(&mut self, buffer_size: usize) -> &mut Self {
         let _ = self
             .tcp_request

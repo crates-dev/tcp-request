@@ -2,11 +2,12 @@ use crate::*;
 
 impl TcpRequest {
     #[inline]
-    fn send_request(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, Error> {
-        stream
-            .write_all(&self.data.read().map_or(Vec::new(), |data| data.clone()))
-            .and_then(|_| stream.flush())
-            .unwrap();
+    fn send_request(
+        &mut self,
+        stream: &mut TcpStream,
+        data: &[u8],
+    ) -> Result<BoxResponseTrait, Error> {
+        stream.write_all(data).and_then(|_| stream.flush()).unwrap();
         self.read_response(stream)
     }
 
@@ -57,7 +58,7 @@ impl RequestTrait for TcpRequest {
     type RequestResult = RequestResult;
 
     #[inline]
-    fn send(&mut self) -> Self::RequestResult {
+    fn send(&mut self, data: &[u8]) -> Self::RequestResult {
         let cfg_timeout: Config = self
             .get_config()
             .read()
@@ -67,7 +68,7 @@ impl RequestTrait for TcpRequest {
         let mut stream: TcpStream = self
             .get_connection_stream(host, port)
             .map_err(|_| Error::TcpStreamConnectError)?;
-        let res: Result<BoxResponseTrait, Error> = self.send_request(&mut stream);
+        let res: Result<BoxResponseTrait, Error> = self.send_request(&mut stream, data);
         res
     }
 }
@@ -78,7 +79,6 @@ impl Default for TcpRequest {
         Self {
             config: Arc::new(RwLock::new(Config::default())),
             response: Arc::new(RwLock::new(TcpResponseBinary::default())),
-            data: Arc::new(RwLock::new(Vec::new())),
         }
     }
 }
