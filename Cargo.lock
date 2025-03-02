@@ -44,7 +44,7 @@ dependencies = [
 
 [[package]]
 name = "tcp-request"
-version = "2.0.1"
+version = "2.0.2"
 dependencies = [
  "lombok-macros",
 ]

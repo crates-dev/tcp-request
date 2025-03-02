@@ -33,10 +33,9 @@ use tcp_request::*;
 let mut request_builder = RequestBuilder::new()
     .host("127.0.0.1")
     .port(80)
-    .data("tcp send")
     .build();
 request_builder
-    .send()
+    .send("tcp send".as_bytes())
     .and_then(|response| {
         println!("ResponseTrait => {:?}", response.text());
         Ok(())
@@ -51,10 +50,9 @@ use tcp_request::*;
 let mut request_builder = RequestBuilder::new()
     .host("127.0.0.1")
     .port(80)
-    .data("tcp send".as_bytes())
     .build();
 request_builder
-    .send()
+    .send("tcp send".as_bytes())
     .and_then(|response| {
         println!("ResponseTrait => {:?}", response.text());
         Ok(())
