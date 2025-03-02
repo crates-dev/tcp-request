@@ -7,7 +7,12 @@ impl TcpRequest {
         stream: &mut TcpStream,
         data: &[u8],
     ) -> Result<BoxResponseTrait, Error> {
-        stream.write_all(data).and_then(|_| stream.flush()).unwrap();
+        let mut data_vec: Vec<u8> = data.into();
+        data_vec.extend_from_slice(SPLIT_REQUEST_BYTES);
+        stream
+            .write_all(&data_vec)
+            .and_then(|_| stream.flush())
+            .unwrap();
         self.read_response(stream)
     }
 
