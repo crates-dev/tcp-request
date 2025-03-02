@@ -4,9 +4,9 @@ version = 4
 
 [[package]]
 name = "lombok-macros"
-version = "1.7.4"
+version = "1.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d9203d7ef929978612d2c71f5e7ed13529d00e4e9b6a683a2c59713148ab574b"
+checksum = "c093f50f1ac912704228373ec7c7b9e5c927bb37e7c37a8f3d3a53aad2249425"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -44,7 +44,7 @@ dependencies = [
 
 [[package]]
 name = "tcp-request"
-version = "2.0.4"
+version = "2.0.5"
 dependencies = [
  "lombok-macros",
 ]
