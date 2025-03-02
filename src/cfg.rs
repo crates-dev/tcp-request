@@ -35,7 +35,7 @@ fn test_readme_binary() {
     request_builder
         .send("tcp send".as_bytes())
         .and_then(|response| {
-            println!("ResponseTrait => {:?}", response.text());
+            println!("ResponseTrait => {:?}", response.binary());
             Ok(())
         })
         .unwrap_or_else(|e| println!("Error => {:?}", e));

@@ -26,7 +26,7 @@ cargo add tcp-request
 
 ## Use
 
-#### Send Text
+#### Receive Text
 
 ```rs
 use tcp_request::*;
@@ -43,7 +43,7 @@ request_builder
     .unwrap_or_else(|e| println!("Error => {:?}", e));
 ```
 
-#### Send Binary
+#### Receive Binary
 
 ```rs
 use tcp_request::*;
@@ -54,7 +54,7 @@ let mut request_builder = RequestBuilder::new()
 request_builder
     .send("tcp send".as_bytes())
     .and_then(|response| {
-        println!("ResponseTrait => {:?}", response.text());
+        println!("ResponseTrait => {:?}", response.binary());
         Ok(())
     })
     .unwrap_or_else(|e| println!("Error => {:?}", e));

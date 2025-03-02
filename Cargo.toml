@@ -1,6 +1,6 @@
 [package]
 name = "tcp-request"
-version = "2.0.2"
+version = "2.0.3"
 edition = "2021"
 authors = ["ltpp-universe <root@ltpp.vip>"] 
 license = "MIT"
