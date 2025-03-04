@@ -30,6 +30,7 @@ cargo add tcp-request
 
 ```rs
 use tcp_request::*;
+
 let mut request_builder = RequestBuilder::new()
     .host("127.0.0.1")
     .port(80)
@@ -47,6 +48,7 @@ request_builder
 
 ```rs
 use tcp_request::*;
+
 let mut request_builder = RequestBuilder::new()
     .host("127.0.0.1")
     .port(80)
