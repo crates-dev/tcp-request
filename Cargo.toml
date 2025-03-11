@@ -1,6 +1,6 @@
 [package]
 name = "tcp-request"
-version = "2.0.6"
+version = "2.0.7"
 edition = "2021"
 authors = ["ltpp-universe <root@ltpp.vip>"] 
 license = "MIT"
@@ -16,7 +16,7 @@ exclude = [
 ]
 
 [dependencies]
-lombok-macros = "1.8.0"
+lombok-macros = "1.8.1"
 
 [profile.dev]
 incremental = false
@@ -26,7 +26,6 @@ panic = "unwind"
 debug = false
 codegen-units = 1
 strip = "debuginfo"
-backtrace = "off"
 
 [profile.release]
 incremental = false
@@ -36,4 +35,3 @@ panic = "unwind"
 debug = false
 codegen-units = 1
 strip = "debuginfo"
-backtrace = "off"
