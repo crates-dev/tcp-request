@@ -1,7 +1,7 @@
 use crate::*;
 use std::{
     sync::Mutex,
-    thread::{spawn, JoinHandle},
+    thread::{JoinHandle, spawn},
     time::Instant,
 };
 
