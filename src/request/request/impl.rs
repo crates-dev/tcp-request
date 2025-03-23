@@ -1,7 +1,6 @@
 use crate::*;
 
 impl TcpRequest {
-    #[inline]
     fn send_request(
         &mut self,
         stream: &mut TcpStream,
@@ -16,7 +15,6 @@ impl TcpRequest {
         self.read_response(stream)
     }
 
-    #[inline]
     fn read_response(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, Error> {
         let cfg_buffer_size: usize = self
             .get_config()
@@ -38,7 +36,6 @@ impl TcpRequest {
         ));
     }
 
-    #[inline]
     fn get_connection_stream(&self, host: String, port: usize) -> Result<TcpStream, Error> {
         let host_port: (String, u16) = (host.clone(), port as u16);
         let cfg_timeout: u64 = self
@@ -62,7 +59,6 @@ impl TcpRequest {
 impl RequestTrait for TcpRequest {
     type RequestResult = RequestResult;
 
-    #[inline]
     fn send(&mut self, data: &[u8]) -> Self::RequestResult {
         let cfg_timeout: Config = self
             .get_config()
@@ -79,7 +75,6 @@ impl RequestTrait for TcpRequest {
 }
 
 impl Default for TcpRequest {
-    #[inline]
     fn default() -> Self {
         Self {
             config: Arc::new(RwLock::new(Config::default())),

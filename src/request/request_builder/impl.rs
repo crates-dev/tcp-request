@@ -1,7 +1,6 @@
 use crate::*;
 
 impl Default for RequestBuilder {
-    #[inline]
     fn default() -> Self {
         Self {
             tcp_request: TcpRequest::default(),
@@ -11,12 +10,10 @@ impl Default for RequestBuilder {
 }
 
 impl RequestBuilder {
-    #[inline]
     pub fn new() -> Self {
         Self::default()
     }
 
-    #[inline]
     pub fn host<T>(&mut self, host: T) -> &mut Self
     where
         T: Into<String>,
@@ -32,7 +29,6 @@ impl RequestBuilder {
         self
     }
 
-    #[inline]
     pub fn port(&mut self, port: usize) -> &mut Self {
         let _ = self
             .tcp_request
@@ -45,7 +41,6 @@ impl RequestBuilder {
         self
     }
 
-    #[inline]
     pub fn buffer(&mut self, buffer_size: usize) -> &mut Self {
         let _ = self
             .tcp_request
@@ -58,7 +53,6 @@ impl RequestBuilder {
         self
     }
 
-    #[inline]
     pub fn timeout(&mut self, timeout: u64) -> &mut Self {
         let _ = self
             .tcp_request
@@ -71,7 +65,6 @@ impl RequestBuilder {
         self
     }
 
-    #[inline]
     pub fn build(&mut self) -> BoxRequestTrait {
         self.builder = self.tcp_request.clone();
         self.tcp_request = TcpRequest::default();
