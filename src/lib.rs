@@ -13,7 +13,7 @@ pub use response::{
     r#trait::ResponseTrait, r#type::BoxResponseTrait,
 };
 
-pub(crate) use common::{constant::*, r#type::*};
+pub(crate) use common::{r#const::*, r#type::*};
 pub(crate) use lombok_macros::*;
 pub(crate) use request::{
     config::r#type::*, error::r#type::Error, request::r#type::*, r#type::RequestResult,
