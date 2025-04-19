@@ -5,7 +5,7 @@ impl TcpRequest {
         &mut self,
         stream: &mut TcpStream,
         data: &[u8],
-    ) -> Result<BoxResponseTrait, Error> {
+    ) -> Result<BoxResponseTrait, RequestError> {
         let mut data_vec: Vec<u8> = data.into();
         data_vec.extend_from_slice(SPLIT_REQUEST_BYTES);
         stream
@@ -15,7 +15,7 @@ impl TcpRequest {
         self.read_response(stream)
     }
 
-    fn read_response(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, Error> {
+    fn read_response(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, RequestError> {
         let cfg_buffer_size: usize = self
             .get_config()
             .read()
@@ -36,22 +36,22 @@ impl TcpRequest {
         ));
     }
 
-    fn get_connection_stream(&self, host: String, port: usize) -> Result<TcpStream, Error> {
+    fn get_connection_stream(&self, host: String, port: usize) -> Result<TcpStream, RequestError> {
         let host_port: (String, u16) = (host.clone(), port as u16);
         let cfg_timeout: u64 = self
             .get_config()
             .read()
             .map_or(DEFAULT_TIMEOUT, |data| data.timeout);
         let timeout: Duration = Duration::from_millis(cfg_timeout);
-        let tcp_stream: TcpStream =
-            TcpStream::connect(host_port.clone()).map_err(|_| Error::TcpStreamConnectError)?;
+        let tcp_stream: TcpStream = TcpStream::connect(host_port.clone())
+            .map_err(|_| RequestError::TcpStreamConnectError)?;
         tcp_stream
             .set_read_timeout(Some(timeout))
-            .map_err(|_| Error::SetReadTimeoutError)?;
+            .map_err(|_| RequestError::SetReadTimeoutError)?;
         tcp_stream
             .set_write_timeout(Some(timeout))
-            .map_err(|_| Error::SetWriteTimeoutError)?;
-        let stream: Result<TcpStream, Error> = Ok(tcp_stream);
+            .map_err(|_| RequestError::SetWriteTimeoutError)?;
+        let stream: Result<TcpStream, RequestError> = Ok(tcp_stream);
         stream
     }
 }
@@ -68,8 +68,8 @@ impl RequestTrait for TcpRequest {
         let port: usize = cfg_timeout.get_port().clone();
         let mut stream: TcpStream = self
             .get_connection_stream(host, port)
-            .map_err(|_| Error::TcpStreamConnectError)?;
-        let res: Result<BoxResponseTrait, Error> = self.send_request(&mut stream, data);
+            .map_err(|_| RequestError::TcpStreamConnectError)?;
+        let res: Result<BoxResponseTrait, RequestError> = self.send_request(&mut stream, data);
         res
     }
 }

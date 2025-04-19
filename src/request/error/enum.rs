@@ -1,5 +1,5 @@
 #[derive(Debug)]
-pub enum Error {
+pub enum RequestError {
     InvalidUrl,
     TcpStreamConnectError,
     RequestError,

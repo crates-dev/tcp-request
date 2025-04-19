@@ -1,8 +1,8 @@
 use crate::*;
 
-impl StdError for Error {}
+impl StdError for RequestError {}
 
-impl Display for Error {
+impl Display for RequestError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::InvalidUrl => write!(f, "Invalid URL"),
