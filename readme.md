@@ -5,7 +5,7 @@
 [![](https://img.shields.io/crates/v/tcp-request.svg)](https://crates.io/crates/tcp-request)
 [![](https://img.shields.io/crates/d/tcp-request.svg)](https://img.shields.io/crates/d/tcp-request.svg)
 [![](https://docs.rs/tcp-request/badge.svg)](https://docs.rs/tcp-request)
-[![](https://github.com/ltpp-universe/tcp-request/workflows/Rust/badge.svg)](https://github.com/ltpp-universe/tcp-request/actions?query=workflow:Rust)
+[![](https://github.com/eastspire/tcp-request/workflows/Rust/badge.svg)](https://github.com/eastspire/tcp-request/actions?query=workflow:Rust)
 [![](https://img.shields.io/crates/l/tcp-request.svg)](./LICENSE)
 
 </center>
@@ -76,4 +76,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## Contact
 
-For any inquiries, please reach out to the author at [ltpp-universe <root@ltpp.vip>](mailto:root@ltpp.vip).
+For any inquiries, please reach out to the author at [eastspire <root@ltpp.vip>](mailto:root@ltpp.vip).

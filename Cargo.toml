@@ -1,12 +1,12 @@
 [package]
 name = "tcp-request"
-version = "2.2.2"
+version = "2.2.3"
 edition = "2024"
-authors = ["ltpp-universe <root@ltpp.vip>"] 
+authors = ["eastspire <root@ltpp.vip>"] 
 license = "MIT"
 description = """A Rust library for sending raw TCP requests, with features for handling responses, managing redirects, and working with compressed data over TCP connections."""
 keywords = ["http", "request", "response", "tcp", "redirect"]
-repository = "https://github.com/ltpp-universe/tcp-request.git"
+repository = "https://github.com/eastspire/tcp-request.git"
 categories = ["network-programming", "web-programming"]
 exclude = [
     "target",    
@@ -16,7 +16,7 @@ exclude = [
 ]
 
 [dependencies]
-lombok-macros = "1.11.0"
+lombok-macros = "1.11.1"
 
 [profile.dev]
 incremental = false
