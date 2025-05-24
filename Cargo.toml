@@ -1,6 +1,6 @@
 [package]
 name = "tcp-request"
-version = "2.2.4"
+version = "2.2.5"
 edition = "2024"
 authors = ["root@ltpp.vip"] 
 license = "MIT"
@@ -16,7 +16,7 @@ exclude = [
 ]
 
 [dependencies]
-lombok-macros = "1.11.3"
+lombok-macros = "1.11.4"
 
 [profile.dev]
 incremental = false
