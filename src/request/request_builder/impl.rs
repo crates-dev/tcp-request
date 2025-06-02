@@ -18,50 +18,34 @@ impl RequestBuilder {
     where
         T: Into<String>,
     {
-        let _ = self
-            .tcp_request
-            .get_mut_config()
-            .write()
-            .and_then(|mut data| {
-                data.host = host.into();
-                Ok(())
-            });
+        let _ = self.tcp_request.config.write().and_then(|mut data| {
+            data.host = host.into();
+            Ok(())
+        });
         self
     }
 
     pub fn port(&mut self, port: usize) -> &mut Self {
-        let _ = self
-            .tcp_request
-            .get_mut_config()
-            .write()
-            .and_then(|mut data| {
-                data.port = port;
-                Ok(())
-            });
+        let _ = self.tcp_request.config.write().and_then(|mut data| {
+            data.port = port;
+            Ok(())
+        });
         self
     }
 
     pub fn buffer(&mut self, buffer_size: usize) -> &mut Self {
-        let _ = self
-            .tcp_request
-            .get_mut_config()
-            .write()
-            .and_then(|mut data| {
-                data.buffer_size = buffer_size;
-                Ok(())
-            });
+        let _ = self.tcp_request.config.write().and_then(|mut data| {
+            data.buffer_size = buffer_size;
+            Ok(())
+        });
         self
     }
 
     pub fn timeout(&mut self, timeout: u64) -> &mut Self {
-        let _ = self
-            .tcp_request
-            .get_mut_config()
-            .write()
-            .and_then(|mut data| {
-                data.timeout = timeout;
-                Ok(())
-            });
+        let _ = self.tcp_request.config.write().and_then(|mut data| {
+            data.timeout = timeout;
+            Ok(())
+        });
         self
     }
 

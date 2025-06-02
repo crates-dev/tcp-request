@@ -1,6 +1,6 @@
 use crate::*;
 
-#[derive(Debug, Clone, PartialEq, Eq, Data)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Config {
     pub host: String,
     pub port: usize,

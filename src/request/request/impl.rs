@@ -17,7 +17,7 @@ impl TcpRequest {
 
     fn read_response(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, RequestError> {
         let cfg_buffer_size: usize = self
-            .get_config()
+            .config
             .read()
             .map_or(DEFAULT_BUFFER_SIZE, |data| data.buffer_size);
         let mut tmp_buf: Vec<u8> = vec![0u8; cfg_buffer_size];
@@ -39,7 +39,7 @@ impl TcpRequest {
     fn get_connection_stream(&self, host: String, port: usize) -> Result<TcpStream, RequestError> {
         let host_port: (String, u16) = (host.clone(), port as u16);
         let cfg_timeout: u64 = self
-            .get_config()
+            .config
             .read()
             .map_or(DEFAULT_TIMEOUT, |data| data.timeout);
         let timeout: Duration = Duration::from_millis(cfg_timeout);
@@ -61,11 +61,11 @@ impl RequestTrait for TcpRequest {
 
     fn send(&mut self, data: &[u8]) -> Self::RequestResult {
         let cfg_timeout: Config = self
-            .get_config()
+            .config
             .read()
             .map_or(Config::default(), |data| data.clone());
-        let host: String = cfg_timeout.get_host().clone();
-        let port: usize = cfg_timeout.get_port().clone();
+        let host: String = cfg_timeout.host.clone();
+        let port: usize = cfg_timeout.port.clone();
         let mut stream: TcpStream = self
             .get_connection_stream(host, port)
             .map_err(|_| RequestError::TcpStreamConnectError)?;

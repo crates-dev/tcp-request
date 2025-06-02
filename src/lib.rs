@@ -9,7 +9,6 @@ pub use response::*;
 
 pub(crate) use common::*;
 
-pub(crate) use lombok_macros::*;
 pub(crate) use std::{
     error::Error as StdError,
     fmt::Debug,
