@@ -1,6 +1,6 @@
 [package]
 name = "tcp-request"
-version = "2.2.9"
+version = "2.2.10"
 edition = "2024"
 authors = ["root@ltpp.vip"]
 license = "MIT"

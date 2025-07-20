@@ -28,7 +28,7 @@ cargo add tcp-request
 
 #### Receive Text
 
-```rs
+```rust
 use tcp_request::*;
 
 let mut request_builder = RequestBuilder::new()
@@ -46,7 +46,7 @@ request_builder
 
 #### Receive Binary
 
-```rs
+```rust
 use tcp_request::*;
 
 let mut request_builder = RequestBuilder::new()
