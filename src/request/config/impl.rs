@@ -1,6 +1,12 @@
 use crate::*;
 
+/// Default implementation for Config.
 impl Default for Config {
+    /// Creates a default configuration instance.
+    ///
+    /// # Returns
+    ///
+    /// - `Config` - A new Config instance with default values.
     fn default() -> Self {
         Self {
             timeout: DEFAULT_TIMEOUT,

@@ -1,3 +1,9 @@
+//! tcp-request
+//!
+//! A Rust library for sending raw TCP requests, with features
+//! for handling responses, managing redirects, and working
+//! with compressed data over TCP connections.
+
 #[cfg(test)]
 mod cfg;
 pub(crate) mod common;

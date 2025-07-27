@@ -1,6 +1,17 @@
 use crate::*;
 
+/// Implementation of TCP request operations.
 impl TcpRequest {
+    /// Sends data through the TCP connection.
+    ///
+    /// # Arguments
+    ///
+    /// - `&mut TcpStream` - The TCP stream to send data through.
+    /// - `&[u8]` - The data to be sent.
+    ///
+    /// # Returns
+    ///
+    /// - `Result<BoxResponseTrait, RequestError>` - The response or error.
     fn send_request(
         &mut self,
         stream: &mut TcpStream,
@@ -15,6 +26,15 @@ impl TcpRequest {
         self.read_response(stream)
     }
 
+    /// Reads response from the TCP connection.
+    ///
+    /// # Arguments
+    ///
+    /// - `&mut TcpStream` - The TCP stream to read from.
+    ///
+    /// # Returns
+    ///
+    /// - `Result<BoxResponseTrait, RequestError>` - The response or error.
     fn read_response(&mut self, stream: &mut TcpStream) -> Result<BoxResponseTrait, RequestError> {
         let cfg_buffer_size: usize = self
             .config
@@ -36,6 +56,16 @@ impl TcpRequest {
         ));
     }
 
+    /// Establishes a TCP connection to the specified host and port.
+    ///
+    /// # Arguments
+    ///
+    /// - `String` - The host address to connect to.
+    /// - `usize` - The port number to connect to.
+    ///
+    /// # Returns
+    ///
+    /// - `Result<TcpStream, RequestError>` - The TCP stream or error.
     fn get_connection_stream(&self, host: String, port: usize) -> Result<TcpStream, RequestError> {
         let host_port: (String, u16) = (host.clone(), port as u16);
         let cfg_timeout: u64 = self
@@ -56,9 +86,19 @@ impl TcpRequest {
     }
 }
 
+/// RequestTrait implementation for TcpRequest.
 impl RequestTrait for TcpRequest {
     type RequestResult = RequestResult;
 
+    /// Sends data through the TCP request.
+    ///
+    /// # Arguments
+    ///
+    /// - `&[u8]` - The data to be sent.
+    ///
+    /// # Returns
+    ///
+    /// - `RequestResult` - The result of the send operation.
     fn send(&mut self, data: &[u8]) -> Self::RequestResult {
         let cfg_timeout: Config = self
             .config
@@ -74,7 +114,13 @@ impl RequestTrait for TcpRequest {
     }
 }
 
+/// Default implementation for TcpRequest.
 impl Default for TcpRequest {
+    /// Creates a default TcpRequest instance.
+    ///
+    /// # Returns
+    ///
+    /// - `TcpRequest` - A new TcpRequest instance with default configuration.
     fn default() -> Self {
         Self {
             config: Arc::new(RwLock::new(Config::default())),
