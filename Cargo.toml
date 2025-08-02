@@ -1,12 +1,13 @@
 [package]
 name = "tcp-request"
-version = "2.3.0"
+version = "2.3.1"
+readme = "README.md"
 edition = "2024"
 authors = ["root@ltpp.vip"]
 license = "MIT"
 description = """A Rust library for sending raw TCP requests, with features for handling responses, managing redirects, and working with compressed data over TCP connections."""
 keywords = ["http", "request", "response", "tcp", "redirect"]
-repository = "https://github.com/eastspire/tcp-request.git"
+repository = "https://github.com/crates-dev/tcp-request.git"
 categories = ["network-programming", "web-programming"]
 exclude = [
     "target",
