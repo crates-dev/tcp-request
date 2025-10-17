@@ -22,6 +22,7 @@ impl RequestBuilder {
     /// # Returns
     ///
     /// - `RequestBuilder` - A new RequestBuilder with default configuration.
+    #[inline]
     pub fn new() -> Self {
         Self::default()
     }
