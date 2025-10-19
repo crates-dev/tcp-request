@@ -40,9 +40,8 @@ impl RequestBuilder {
     where
         T: Into<String>,
     {
-        let _ = self.tcp_request.config.write().and_then(|mut data| {
+        let _ = self.tcp_request.config.write().map(|mut data| {
             data.host = host.into();
-            Ok(())
         });
         self
     }
@@ -57,9 +56,8 @@ impl RequestBuilder {
     ///
     /// - `&mut Self` - The builder for method chaining.
     pub fn port(&mut self, port: usize) -> &mut Self {
-        let _ = self.tcp_request.config.write().and_then(|mut data| {
+        let _ = self.tcp_request.config.write().map(|mut data| {
             data.port = port;
-            Ok(())
         });
         self
     }
@@ -74,9 +72,8 @@ impl RequestBuilder {
     ///
     /// - `&mut Self` - The builder for method chaining.
     pub fn buffer(&mut self, buffer_size: usize) -> &mut Self {
-        let _ = self.tcp_request.config.write().and_then(|mut data| {
+        let _ = self.tcp_request.config.write().map(|mut data| {
             data.buffer_size = buffer_size;
-            Ok(())
         });
         self
     }
@@ -91,9 +88,8 @@ impl RequestBuilder {
     ///
     /// - `&mut Self` - The builder for method chaining.
     pub fn timeout(&mut self, timeout: u64) -> &mut Self {
-        let _ = self.tcp_request.config.write().and_then(|mut data| {
+        let _ = self.tcp_request.config.write().map(|mut data| {
             data.timeout = timeout;
-            Ok(())
         });
         self
     }

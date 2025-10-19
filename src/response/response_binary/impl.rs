@@ -39,7 +39,7 @@ impl ResponseTrait for TcpResponseBinary {
     /// - `TcpResponseText` - The text representation of the response.
     #[inline]
     fn text(&self) -> TcpResponseText {
-        let data: String = String::from_utf8_lossy(&self).to_string();
+        let data: String = String::from_utf8_lossy(self).to_string();
         data
     }
 }

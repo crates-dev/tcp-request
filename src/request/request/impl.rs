@@ -51,9 +51,9 @@ impl TcpRequest {
         self.response = Arc::new(RwLock::new(<TcpResponseBinary as ResponseTrait>::from(
             &response_bytes,
         )));
-        return Ok(Box::new(
+        Ok(Box::new(
             self.response.read().map_or(Vec::new(), |data| data.clone()),
-        ));
+        ))
     }
 
     /// Establishes a TCP connection to the specified host and port.
@@ -105,7 +105,7 @@ impl RequestTrait for TcpRequest {
             .read()
             .map_or(Config::default(), |data| data.clone());
         let host: String = cfg_timeout.host.clone();
-        let port: usize = cfg_timeout.port.clone();
+        let port: usize = cfg_timeout.port;
         let mut stream: TcpStream = self
             .get_connection_stream(host, port)
             .map_err(|_| RequestError::TcpStreamConnectError)?;
