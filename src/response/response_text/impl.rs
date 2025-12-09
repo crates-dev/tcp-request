@@ -14,7 +14,7 @@ impl ResponseTrait for TcpResponseText {
     /// # Returns
     ///
     /// - `Self::OutputText` - The text response instance.
-    #[inline]
+    #[inline(always)]
     fn from(response: &[u8]) -> Self::OutputText
     where
         Self: Sized,
@@ -27,7 +27,7 @@ impl ResponseTrait for TcpResponseText {
     /// # Returns
     ///
     /// - `Self::OutputText` - The text response data.
-    #[inline]
+    #[inline(always)]
     fn text(&self) -> Self::OutputText {
         self.clone()
     }
@@ -37,7 +37,7 @@ impl ResponseTrait for TcpResponseText {
     /// # Returns
     ///
     /// - `TcpResponseBinary` - The binary representation of the response.
-    #[inline]
+    #[inline(always)]
     fn binary(&self) -> TcpResponseBinary {
         self.clone().into_bytes()
     }

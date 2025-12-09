@@ -7,6 +7,7 @@ impl Default for Config {
     /// # Returns
     ///
     /// - `Config` - A new Config instance with default values.
+    #[inline(always)]
     fn default() -> Self {
         Self {
             timeout: DEFAULT_TIMEOUT,

@@ -1,5 +1,21 @@
 use crate::*;
 
+/// Default implementation for TcpRequest.
+impl Default for TcpRequest {
+    /// Creates a default TcpRequest instance.
+    ///
+    /// # Returns
+    ///
+    /// - `TcpRequest` - A new TcpRequest instance with default configuration.
+    #[inline(always)]
+    fn default() -> Self {
+        Self {
+            config: Arc::new(RwLock::new(Config::default())),
+            response: Arc::new(RwLock::new(TcpResponseBinary::default())),
+        }
+    }
+}
+
 /// Implementation of TCP request operations.
 impl TcpRequest {
     /// Sends data through the TCP connection.
@@ -111,20 +127,5 @@ impl RequestTrait for TcpRequest {
             .map_err(|_| RequestError::TcpStreamConnectError)?;
         let res: Result<BoxResponseTrait, RequestError> = self.send_request(&mut stream, data);
         res
-    }
-}
-
-/// Default implementation for TcpRequest.
-impl Default for TcpRequest {
-    /// Creates a default TcpRequest instance.
-    ///
-    /// # Returns
-    ///
-    /// - `TcpRequest` - A new TcpRequest instance with default configuration.
-    fn default() -> Self {
-        Self {
-            config: Arc::new(RwLock::new(Config::default())),
-            response: Arc::new(RwLock::new(TcpResponseBinary::default())),
-        }
     }
 }

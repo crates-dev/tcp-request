@@ -7,6 +7,7 @@ impl Default for RequestBuilder {
     /// # Returns
     ///
     /// - `RequestBuilder` - A new RequestBuilder with default configuration.
+    #[inline(always)]
     fn default() -> Self {
         Self {
             tcp_request: TcpRequest::default(),
@@ -22,7 +23,7 @@ impl RequestBuilder {
     /// # Returns
     ///
     /// - `RequestBuilder` - A new RequestBuilder with default configuration.
-    #[inline]
+    #[inline(always)]
     pub fn new() -> Self {
         Self::default()
     }
