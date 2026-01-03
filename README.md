@@ -24,44 +24,6 @@ To use this crate, you can run cmd:
 cargo add tcp-request
 ```
 
-## Use
-
-#### Receive Text
-
-```rust
-use tcp_request::*;
-
-let mut request_builder = RequestBuilder::new()
-    .host("127.0.0.1")
-    .port(80)
-    .build();
-request_builder
-    .send("tcp send".as_bytes())
-    .and_then(|response| {
-        println!("ResponseTrait => {:?}", response.text());
-        Ok(())
-    })
-    .unwrap_or_else(|e| println!("Error => {:?}", e));
-```
-
-#### Receive Binary
-
-```rust
-use tcp_request::*;
-
-let mut request_builder = RequestBuilder::new()
-    .host("127.0.0.1")
-    .port(80)
-    .build();
-request_builder
-    .send("tcp send".as_bytes())
-    .and_then(|response| {
-        println!("ResponseTrait => {:?}", response.binary());
-        Ok(())
-    })
-    .unwrap_or_else(|e| println!("Error => {:?}", e));
-```
-
 ## Help
 
 Ensure that CMake is installed on the system
