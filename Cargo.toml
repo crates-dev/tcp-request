@@ -1,6 +1,6 @@
 [package]
 name = "tcp-request"
-version = "2.3.12"
+version = "2.3.13"
 readme = "README.md"
 edition = "2024"
 authors = ["root@ltpp.vip"]

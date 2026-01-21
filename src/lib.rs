@@ -4,9 +4,9 @@
 //! for handling responses, managing redirects, and working
 //! with compressed data over TCP connections.
 
-pub(crate) mod common;
-pub(crate) mod request;
-pub(crate) mod response;
+mod common;
+mod request;
+mod response;
 
 pub use {request::*, response::*};
 
