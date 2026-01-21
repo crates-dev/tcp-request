@@ -1,9 +1,4 @@
 use crate::*;
-use std::{
-    sync::Mutex,
-    thread::{JoinHandle, spawn},
-    time::Instant,
-};
 
 #[test]
 fn test_readme_text() {

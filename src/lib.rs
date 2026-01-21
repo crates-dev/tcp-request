@@ -4,18 +4,15 @@
 //! for handling responses, managing redirects, and working
 //! with compressed data over TCP connections.
 
-#[cfg(test)]
-mod cfg;
 pub(crate) mod common;
 pub(crate) mod request;
 pub(crate) mod response;
 
-pub use request::*;
-pub use response::*;
+pub use {request::*, response::*};
 
-pub(crate) use common::*;
+use common::*;
 
-pub(crate) use std::{
+use std::{
     error::Error as StdError,
     fmt::Debug,
     fmt::{self, Display},
@@ -23,4 +20,11 @@ pub(crate) use std::{
     net::TcpStream,
     sync::{Arc, RwLock},
     time::Duration,
+};
+
+#[cfg(test)]
+use std::{
+    sync::Mutex,
+    thread::{JoinHandle, spawn},
+    time::Instant,
 };
