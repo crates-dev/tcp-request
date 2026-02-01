@@ -1,7 +1,7 @@
 use crate::*;
 
 /// TCP request structure containing configuration and response data.
-#[derive(Debug, Clone)]
+#[derive(Clone, Debug)]
 pub struct TcpRequest {
     /// Thread-safe configuration for the request.
     pub(crate) config: ArcRwLock<Config>,

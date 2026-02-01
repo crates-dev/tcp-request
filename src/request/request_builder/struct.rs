@@ -1,7 +1,7 @@
 use crate::*;
 
 /// Builder for creating and configuring TCP requests.
-#[derive(Debug, Clone)]
+#[derive(Clone, Debug)]
 pub struct RequestBuilder {
     /// The TCP request being configured.
     pub(crate) tcp_request: TcpRequest,

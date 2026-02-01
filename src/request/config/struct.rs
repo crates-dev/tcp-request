@@ -1,7 +1,7 @@
 use crate::*;
 
 /// Configuration for TCP request settings.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub(crate) struct Config {
     /// Target host address.
     pub(crate) host: String,
