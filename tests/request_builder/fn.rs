@@ -1,4 +1,10 @@
-use crate::*;
+use super::*;
+
+use std::{
+    sync::{Arc, Mutex},
+    thread::{JoinHandle, spawn},
+    time::Instant,
+};
 
 #[test]
 fn test_readme_text() {
@@ -55,7 +61,6 @@ fn test_thread_request() {
         });
         handles.push(handle);
     }
-
     for handle in handles {
         handle.join().unwrap();
     }

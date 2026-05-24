@@ -21,10 +21,3 @@ use std::{
     sync::{Arc, RwLock},
     time::Duration,
 };
-
-#[cfg(test)]
-use std::{
-    sync::Mutex,
-    thread::{JoinHandle, spawn},
-    time::Instant,
-};
