@@ -1,20 +1,14 @@
 use super::*;
 
-use std::{
-    sync::{Arc, Mutex},
-    thread::{JoinHandle, spawn},
-    time::Instant,
-};
-
 #[test]
 fn test_readme_text() {
     let mut request_builder = RequestBuilder::new().host("127.0.0.1").port(60000).build();
     request_builder
         .send("tcp send".as_bytes())
-        .map(|response| {
+        .map(|response: BoxResponseTrait| {
             println!("ResponseTrait => {:?}", response.text());
         })
-        .unwrap_or_else(|e| println!("Error => {e:?}"));
+        .unwrap_or_else(|error: RequestError| println!("Error => {error:?}"));
 }
 
 #[test]
@@ -22,10 +16,10 @@ fn test_readme_binary() {
     let mut request_builder = RequestBuilder::new().host("127.0.0.1").port(60000).build();
     request_builder
         .send("tcp send".as_bytes())
-        .map(|response| {
+        .map(|response: BoxResponseTrait| {
             println!("ResponseTrait => {:?}", response.binary());
         })
-        .unwrap_or_else(|e| println!("Error => {e:?}"));
+        .unwrap_or_else(|error: RequestError| println!("Error => {error:?}"));
 }
 
 #[test]

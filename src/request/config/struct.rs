@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// Configuration for TCP request settings.
 #[derive(Clone, Debug, Eq, PartialEq)]

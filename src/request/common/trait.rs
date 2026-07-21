@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// Trait defining the interface for request operations.
 pub trait RequestTrait: Send + Debug {

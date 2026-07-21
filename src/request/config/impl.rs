@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// Default implementation for Config.
 impl Default for Config {

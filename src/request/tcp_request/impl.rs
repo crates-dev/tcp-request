@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// Default implementation for TcpRequest.
 impl Default for TcpRequest {
@@ -87,7 +87,9 @@ impl TcpRequest {
         let cfg_timeout: u64 = self
             .config
             .read()
-            .map_or(DEFAULT_TIMEOUT, |data| data.timeout);
+            .map_or(DEFAULT_TIMEOUT, |data: RwLockReadGuard<'_, Config>| {
+                data.timeout
+            });
         let timeout: Duration = Duration::from_millis(cfg_timeout);
         let tcp_stream: TcpStream = TcpStream::connect(host_port.clone())
             .map_err(|_| RequestError::TcpStreamConnectError)?;

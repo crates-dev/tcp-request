@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// ResponseTrait implementation for text TCP responses.
 impl ResponseTrait for TcpResponseText {

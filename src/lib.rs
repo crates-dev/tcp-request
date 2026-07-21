@@ -18,6 +18,6 @@ use std::{
     fmt::{self, Display},
     io::{Read, Write},
     net::TcpStream,
-    sync::{Arc, RwLock},
+    sync::{Arc, RwLock, RwLockReadGuard},
     time::Duration,
 };

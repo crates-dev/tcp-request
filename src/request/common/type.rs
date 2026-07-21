@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// Result type for request operations containing either a boxed response trait or request error.
 pub type RequestResult = Result<BoxResponseTrait, RequestError>;

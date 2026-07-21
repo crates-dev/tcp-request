@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// TCP request structure containing configuration and response data.
 #[derive(Clone, Debug)]

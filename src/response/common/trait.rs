@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// Trait defining the interface for response operations.
 pub trait ResponseTrait: Send + Debug {

@@ -1,4 +1,4 @@
-use crate::*;
+use super::*;
 
 /// ResponseTrait implementation for binary TCP responses.
 impl ResponseTrait for TcpResponseBinary {
