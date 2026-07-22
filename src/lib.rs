@@ -13,7 +13,6 @@ pub use {request::*, response::*};
 use common::*;
 
 use std::{
-    error::Error as StdError,
     fmt::Debug,
     fmt::{self, Display},
     io::{Read, Write},

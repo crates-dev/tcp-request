@@ -1,7 +1,7 @@
 use super::*;
 
 /// Standard error implementation for RequestError.
-impl StdError for RequestError {}
+impl std::error::Error for RequestError {}
 
 /// Display formatting implementation for RequestError.
 impl Display for RequestError {
