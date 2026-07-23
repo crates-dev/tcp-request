@@ -1,6 +1,6 @@
 mod r#fn;
 
-use crate::*;
+use super::*;
 
 use std::{
     sync::{Arc, Mutex},
